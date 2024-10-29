@@ -1,21 +1,22 @@
 def count_letters(text):
- letter_counts = {}
- for char in main_str:
-  if char.isalpha():
-   char = char.lower()
-   if char in letter_counts:
-    letter_counts[char] += 1
-   else:
-    letter_counts[char] = 1
- return letter_counts
+    letter_counts = {}
+    for char in main_str:
+        if char.isalpha():
+            char = char.lower()
+            if char in letter_counts:
+                letter_counts[char] += 1
+            else:
+                letter_counts[char] = 1
+    return letter_counts
+
 
 def calculate_frequency(letter_counts):
+    total_letters = sum(letter_counts.values())
+    letter_frequencies = {}
+    for letter, count in letter_counts.items():
+        letter_frequencies[letter] = round(count / total_letters, 2)
+    return letter_frequencies
 
- total_letters = sum(letter_counts.values())
- letter_frequencies = {}
- for letter, count in letter_counts.items():
-  letter_frequencies[letter] = round(count / total_letters, 2)
- return letter_frequencies
 
 main_str = """
 У лукоморья дуб зелёный;
@@ -57,5 +58,5 @@ letter_counts = count_letters(main_str)
 letter_frequencies = calculate_frequency(letter_counts)
 
 for letter, frequency in letter_frequencies.items():
- print(f"{letter}: {frequency:.2f}")
+    print(f"{letter}: {frequency:.2f}")
 # TODO Распечатайте в столбик букву и её частоту в тексте
